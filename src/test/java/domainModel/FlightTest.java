@@ -51,7 +51,7 @@ class FlightTest {
     void bookSeat() {
         // Verifica che il metodo decrementi correttamente la disponibilità dei posti
         int day = 1;
-        Passenger passenger = new Passenger(1, "Alice");
+        Passenger passenger = new Passenger(112, "Alice");
         int initialAvailableSeats = flight.getAvailableSeats(day);
         flight.bookSeat(day, passenger);
         int updatedAvailableSeats = flight.getAvailableSeats(day);

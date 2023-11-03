@@ -9,15 +9,15 @@ public class ElaboratoCiucaniMatteo {
     public static void main(String[] args) {
         FlightData flightData = FlightData.getInstance();
 
-        Passenger passenger1 = new Passenger(1, "Alice");
-        Passenger passenger2 = new Passenger(2, "Bob");
-        Passenger passenger3 = new Passenger(3, "Marco");
-        Passenger passenger4 = new Passenger(4, "Matteo");
-        Passenger passenger5 = new Passenger(5, "Massimo");
-        Passenger passenger6 = new Passenger(6, "Elia");
-        Passenger passenger7 = new Passenger(7, "Lorenzo");
-        Passenger passenger8 = new Passenger(8, "Jon");
-        Passenger passenger9 = new Passenger(9, "Ginevra");
+        Passenger passenger1 = new Passenger(112, "Alice");
+        Passenger passenger2 = new Passenger(117, "Bob");
+        Passenger passenger3 = new Passenger(298, "Marco");
+        Passenger passenger4 = new Passenger(315, "Matteo");
+        Passenger passenger5 = new Passenger(127, "Massimo");
+        Passenger passenger6 = new Passenger(221, "Elia");
+        Passenger passenger7 = new Passenger(345, "Lorenzo");
+        Passenger passenger8 = new Passenger(441, "Jon");
+        Passenger passenger9 = new Passenger(657, "Ginevra");
 
         flightData.addAircraft("A123", "Boeing 737", 150);
         flightData.addAircraft("B456", "Airbus A320", 120);
