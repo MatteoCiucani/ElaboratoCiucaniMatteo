@@ -61,9 +61,10 @@ class FlightDataTest {
         // Verifica che i voli siano ordinati correttamente per ora di partenza
         flightData.addAircraft("A123", "Boeing 737", 150);
         flightData.addAircraft("B456", "Airbus A320", 120);
+        flightData.addAircraft("A121", "Boeing 747", 180 );
         flightData.addFlight("F101", "A123", "JFK", "LAX", "10:00");
         flightData.addFlight("F102", "B456", "LAX", "JFK", "14:00");
-        flightData.addFlight("F103", "A123", "SFO", "ORD", "08:00");
+        flightData.addFlight("F103", "A121", "SFO", "ORD", "08:00");
         List<Flight> flights = flightData.getFlightsSortedByDepartureTime();
         assertEquals("F103", flights.get(0).getCode());
         assertEquals("F101", flights.get(1).getCode());
