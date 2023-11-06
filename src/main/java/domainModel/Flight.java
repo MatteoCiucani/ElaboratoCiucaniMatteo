@@ -51,9 +51,9 @@ public class Flight implements Subject{
         return departureTime;
     }
 
-    public int getTotalSeats() {
+    /*public int getTotalSeats() {
         return totalSeats;
-    }
+    }*/
 
     public int getAvailableSeats(int day) {
         return seatAvailability.get(day);

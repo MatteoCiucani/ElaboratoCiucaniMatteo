@@ -1,4 +1,5 @@
 package com.unifi;
+import domainModel.Aircraft;
 import domainModel.FlightData;
 import domainModel.Flight;
 import domainModel.Passenger;
@@ -21,11 +22,22 @@ public class ElaboratoCiucaniMatteo {
 
         flightData.addAircraft("A123", "Boeing 737", 150);
         flightData.addAircraft("B456", "Airbus A320", 120);
+        flightData.addAircraft("A121", "Boeing 747", 180);
+
+        Aircraft aircraftF101 = flightData.getAircraftByCode("A123");
+        Aircraft aircraftF102 = flightData.getAircraftByCode("B456");
+        Aircraft aircraftF103 = flightData.getAircraftByCode("A121");
 
         flightData.addFlight("F101", "A123", "JFK", "LAX", "10:00");
         flightData.addFlight("F102", "B456", "LAX", "JFK", "14:00");
-        flightData.addFlight("F103", "A123", "SFO", "ORD", "08:00");
+        flightData.addFlight("F103", "A121", "SFO", "ORD", "08:00");
 
+        System.out.println("Seats for flight:");
+        System.out.println("Seats for flight F101: " + aircraftF101.getTotalSeats());
+        System.out.println("Seats for flight F102: " + aircraftF102.getTotalSeats());
+        System.out.println("Seats for flight F103: " + aircraftF103.getTotalSeats());
+
+        System.out.println("Fare for flight:");
         flightData.setFareForFlight("F101", 200.0);
         flightData.setFareForFlight("F102", 250.0);
         flightData.setFareForFlight("F103", 180.0);

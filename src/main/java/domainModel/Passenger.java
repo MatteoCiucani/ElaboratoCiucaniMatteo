@@ -36,9 +36,9 @@ public class Passenger implements Observer{
         }
     }
 
-    public List<Reservation> getReservations() {
+    /*public List<Reservation> getReservations() {
         return reservations;
-    }
+    }*/
 
     @Override
     public String toString() {

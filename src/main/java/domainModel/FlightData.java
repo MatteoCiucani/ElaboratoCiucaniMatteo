@@ -63,26 +63,26 @@ public class FlightData {
                 .collect(Collectors.toList());
     }
 
-    public List<Flight> getFlightsByAircraft(String aircraftCode) {
+    /*public List<Flight> getFlightsByAircraft(String aircraftCode) {
         return flightMap.values()
                 .stream()
                 .filter(flight -> flight.getAircraft().getCode().equals(aircraftCode))
                 .collect(Collectors.toList());
-    }
+    }*/
 
-    public List<Reservation> getReservationsForFlight(String flightCode) {
+    /*public List<Reservation> getReservationsForFlight(String flightCode) {
         if (reservationsMap.containsKey(flightCode)) {
             return reservationsMap.get(flightCode);
         } else {
             return new ArrayList<>();
         }
-    }
+    }*/
 
-    public void initializeReservations(String flightCode) {
+    /*public void initializeReservations(String flightCode) {
         if (!reservationsMap.containsKey(flightCode)) {
             reservationsMap.put(flightCode, new ArrayList<>());
         }
-    }
+    }*/
 
     public Flight getFlightByCode(String flightCode) {
         if (flightMap.containsKey(flightCode)) {
