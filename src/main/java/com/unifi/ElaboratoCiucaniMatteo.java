@@ -20,7 +20,7 @@ public class ElaboratoCiucaniMatteo {
         Passenger passenger8 = new Passenger(441, "Jon");
         Passenger passenger9 = new Passenger(657, "Ginevra");
 
-        flightData.addAircraft("A123", "Boeing 737", 150);
+        flightData.addAircraft("A123", "Boeing 737", 2);
         flightData.addAircraft("B456", "Airbus A320", 120);
         flightData.addAircraft("A121", "Boeing 747", 180);
 
@@ -62,12 +62,14 @@ public class ElaboratoCiucaniMatteo {
         passenger1.makeReservation(flights.get(0), 1);
         passenger2.makeReservation(flights.get(2), 1);
         passenger3.makeReservation(flights.get(1), 1);
-        passenger4.makeReservation(flights.get(1), 7);
+        passenger4.makeReservation(flights.get(1), 1);
         passenger5.makeReservation(flights.get(2), 6);
         passenger6.makeReservation(flights.get(0), 6);
         passenger7.makeReservation(flights.get(1), 3);
         passenger8.makeReservation(flights.get(0), 4);
         passenger9.makeReservation(flights.get(1), 1);
+
+
 
 
         Flight flightF101 = flightData.getFlightByCode("F101");

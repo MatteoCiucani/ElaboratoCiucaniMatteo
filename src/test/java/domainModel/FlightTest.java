@@ -1,7 +1,10 @@
 package domainModel;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
+
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 class FlightTest {
     private Flight flight;
@@ -34,13 +37,11 @@ class FlightTest {
         for (int day = 1; day <= 7; day++) {
             assertTrue(flight.isSeatAvailable(day));
         }
-
         // Prenotiamo tutti i posti in un giorno specifico
         for (int day = 1; day <= 7; day++) {
             Passenger passenger = new Passenger(day, "PassengerName" + day);
             flight.bookSeat(day, passenger);
         }
-
         // Dopo la prenotazione di tutti i posti, il metodo dovrebbe restituire false per tutti i giorni
         for (int day = 1; day <= 7; day++) {
             assertFalse(flight.isSeatAvailable(day));
@@ -56,11 +57,9 @@ class FlightTest {
         flight.bookSeat(day, passenger);
         int updatedAvailableSeats = flight.getAvailableSeats(day);
         assertEquals(initialAvailableSeats - 1, updatedAvailableSeats);
-
         // Verifica che il metodo aggiunga la prenotazione correttamente
         int passengerCount = flight.getPassengerCountForDay(day);
         assertEquals(1, passengerCount);
-
         // Verifica che il metodo restituisca false se non ci sono posti disponibili
         for (int i = 2; i <= 150; i++) {
             Passenger newPassenger = new Passenger(i, "PassengerName" + i);
@@ -96,4 +95,22 @@ class FlightTest {
         updatedPassengerCount = flight.getPassengerCountForDay(day);
         assertEquals(3, updatedPassengerCount);
     }
+
+    @Test
+    public void notifyObserver(){
+        Passenger mockObserver = mock(Passenger.class);
+        Passenger mockObserver1 = mock(Passenger.class);
+
+        // Registrare il mock come osservatore
+        flight.registerObserver(mockObserver);
+        flight.registerObserver(mockObserver1);
+
+        // Eseguire il metodo che notifica gli osservatori
+        flight.notifyObservers();
+
+        // Verificare che il metodo update sia stato chiamato sul mockObserver
+        verify(mockObserver, times(1)).update(eq(flight), anyInt());
+        verify(mockObserver1, times(1)).update(eq(flight), anyInt());
+    }
+
 }

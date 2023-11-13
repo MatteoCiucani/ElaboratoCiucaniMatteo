@@ -2,6 +2,10 @@ package domainModel;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import static org.junit.jupiter.api.Assertions.*;
+import org.mockito.Mockito;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 
 class PassengerTest {
     private Passenger passenger;
@@ -9,6 +13,7 @@ class PassengerTest {
     @BeforeEach
     void setUp(){
         passenger = new Passenger(1, "Alice");
+
     }
     @Test
     void getCode() {
@@ -22,16 +27,26 @@ class PassengerTest {
         passenger.makeReservation(flight, day);
     }
 
-    @Test
+    /*@Test
     void update() {
-        // Creare un oggetto Flight per simulare la notifica
+        /*Observer mockObserver = Mockito.mock(Observer.class);
         Flight flight = new Flight("F101", new Aircraft("A123", "Boeing 737", 150), "JFK", "LAX", "10:00", 150);
-        int availableSeats = 0;
-        passenger.update(flight, availableSeats);
-    }
+        flight.registerObserver(mockObserver);
+        Flight mockFlight = Mockito.mock(Flight.class);
+        passenger.update(mockFlight, 0);
+        Flight flight = new Flight("F101", new Aircraft("A123", "Boeing 737", 0), "JFK", "LAX", "10:00", 150);
+        String message = "Notification to Alice: No available seats left for Flight F101";
+        //passenger.update(flight, 0);
+        System.setOut(new PrintStream(outContent));
+        flight.notifyObservers();
+        String output = outContent.toString();
+        assertFalse(output.contains(message));
+    }*/
 
     @Test
     void testToString() {
         assertEquals("Passenger{code='1', name='Alice'}", passenger.toString());
     }
+
+    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 }
