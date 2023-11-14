@@ -64,7 +64,7 @@ public class Flight implements Subject{
     }
 
     public void bookSeat(int day, Passenger passenger) {
-        if (seatAvailability.containsKey(day)) {
+        if (seatAvailability.containsKey(day) && seatAvailability.get(day) > 0) {
             seatAvailability.put(day, seatAvailability.get(day) - 1);
             // Inizializza la lista delle prenotazioni per il giorno se non esiste
             dayReservations.putIfAbsent(day, new ArrayList<>());

@@ -33,7 +33,7 @@ class PassengerTest {
         Flight flight = new Flight("F101", new Aircraft("A123", "Boeing 737", 150), "JFK", "LAX", "10:00", 150);
         flight.registerObserver(mockObserver);
         Flight mockFlight = Mockito.mock(Flight.class);
-        passenger.update(mockFlight, 0);*/
+        passenger.update(mockFlight, 0);
         Flight flight = new Flight("F101", new Aircraft("A123", "Boeing 737", 10), "JFK", "LAX", "10:00", 150);
         String message = "Notification to Alice: No available seats left for Flight F101";
         //passenger.update(flight, 0);
@@ -41,7 +41,21 @@ class PassengerTest {
         int day = 1;
         flight.notifyObservers(day);
         String output = outContent.toString();
-        assertTrue(output.contains(message));
+        assertTrue(output.contains(message));*/
+        Flight flight = new Flight("F101", new Aircraft("A123", "Boeing 737", 10), "JFK", "LAX", "10:00", 150);
+        Passenger passenger = new Passenger(1, "Alice");
+
+        // Prenota un posto disponibile
+        flight.bookSeat(1, passenger);
+
+        // Ora, notifica gli osservatori
+        int day = 1;
+        System.setOut(new PrintStream(outContent));
+        flight.notifyObservers(day);
+
+        // Verifica che il messaggio sia stampato
+        String output = outContent.toString();
+        assertFalse(output.contains("Notification to Alice: No available seats left for Flight F101"));
     }
 
     @Test

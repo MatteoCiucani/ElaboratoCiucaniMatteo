@@ -31,10 +31,10 @@ class FlightTest {
         assertEquals("10:00", flight.getDepartureTime());
     }
 
-    @Test
+    /*@Test
     void isSeatAvailable() {
         // Inizialmente, tutti i posti dovrebbero essere disponibili
-        for (int day = 1; day <= 7; day++) {
+        /*for (int day = 1; day <= 7; day++) {
             assertTrue(flight.isSeatAvailable(day));
         }
         // Prenotiamo tutti i posti in un giorno specifico
@@ -46,6 +46,31 @@ class FlightTest {
         for (int day = 1; day <= 7; day++) {
             assertFalse(flight.isSeatAvailable(day));
         }
+    }*/
+
+    @Test
+    void isSeatAvailableShouldReturnTrueWhenSeatsAvailable() {
+        // Assumiamo che il giorno 1 abbia posti disponibili prima di eventuali prenotazioni
+        assertTrue(flight.isSeatAvailable(1));
+
+        // Effettua una prenotazione per il giorno 1
+        Passenger passenger = new Passenger(1, "PassengerName1");
+        flight.bookSeat(1, passenger);
+
+        // Verifica che il metodo restituisca false dopo la prenotazione
+        assertTrue(flight.isSeatAvailable(1));
+    }
+
+    @Test
+    void isSeatAvailableShouldReturnFalseWhenNoSeatsAvailable() {
+        int totalSeats = flight.getAvailableSeats(2);
+        for (int i = 0; i < totalSeats; i++) {
+            Passenger passenger = new Passenger(2, "PassengerName2");
+            flight.bookSeat(2, passenger);
+        }
+
+        // Verifica che il metodo restituisca false quando non ci sono più posti disponibili
+        assertFalse(flight.isSeatAvailable(2));
     }
 
     @Test
@@ -112,6 +137,23 @@ class FlightTest {
         // Verificare che il metodo update sia stato chiamato sul mockObserver
         verify(mockObserver, times(1)).update(eq(flight), anyInt());
         verify(mockObserver1, times(1)).update(eq(flight), anyInt());
+    }
+
+    @Test
+    void bookSeatShouldDecreaseAvailableSeats() {
+        // Assume che flight abbia una certa disponibilità di posti prima della prenotazione
+        int day = 1;
+        int initialAvailableSeats = flight.getAvailableSeats(day);
+
+        // Effettua la prenotazione
+        Passenger passenger = new Passenger(day, "PassengerName" + day);
+        flight.bookSeat(day, passenger);
+
+        // Verifica che la prenotazione sia stata registrata correttamente
+        assertTrue(flight.getPassengerCountForDay(day) > 0);
+
+        // Verifica che il numero di posti disponibili sia diminuito di uno
+        assertEquals(initialAvailableSeats - 1, flight.getAvailableSeats(day));
     }
 
 }

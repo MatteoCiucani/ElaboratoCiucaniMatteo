@@ -27,6 +27,7 @@ public class Passenger implements Observer{
         } else {
             System.out.println("Sorry, no available seats for Flight " + flight.getCode() + " on day " + day);
         }
+        flight.notifyObservers(day);
     }
 
     @Override
