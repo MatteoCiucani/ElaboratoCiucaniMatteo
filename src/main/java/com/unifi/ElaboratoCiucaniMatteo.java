@@ -70,8 +70,6 @@ public class ElaboratoCiucaniMatteo {
         passenger9.makeReservation(flights.get(1), 1);
 
 
-
-
         Flight flightF101 = flightData.getFlightByCode("F101");
         System.out.println("Reservations for Flight F101:");
         for (int day = 1; day <= 7; day++) {

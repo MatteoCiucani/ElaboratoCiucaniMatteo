@@ -27,21 +27,22 @@ class PassengerTest {
         passenger.makeReservation(flight, day);
     }
 
-    /*@Test
+    @Test
     void update() {
         /*Observer mockObserver = Mockito.mock(Observer.class);
         Flight flight = new Flight("F101", new Aircraft("A123", "Boeing 737", 150), "JFK", "LAX", "10:00", 150);
         flight.registerObserver(mockObserver);
         Flight mockFlight = Mockito.mock(Flight.class);
-        passenger.update(mockFlight, 0);
-        Flight flight = new Flight("F101", new Aircraft("A123", "Boeing 737", 0), "JFK", "LAX", "10:00", 150);
+        passenger.update(mockFlight, 0);*/
+        Flight flight = new Flight("F101", new Aircraft("A123", "Boeing 737", 10), "JFK", "LAX", "10:00", 150);
         String message = "Notification to Alice: No available seats left for Flight F101";
         //passenger.update(flight, 0);
         System.setOut(new PrintStream(outContent));
-        flight.notifyObservers();
+        int day = 1;
+        flight.notifyObservers(day);
         String output = outContent.toString();
-        assertFalse(output.contains(message));
-    }*/
+        assertTrue(output.contains(message));
+    }
 
     @Test
     void testToString() {

@@ -104,9 +104,10 @@ class FlightTest {
         // Registrare il mock come osservatore
         flight.registerObserver(mockObserver);
         flight.registerObserver(mockObserver1);
+        int day = 1;
 
         // Eseguire il metodo che notifica gli osservatori
-        flight.notifyObservers();
+        flight.notifyObservers(day);
 
         // Verificare che il metodo update sia stato chiamato sul mockObserver
         verify(mockObserver, times(1)).update(eq(flight), anyInt());

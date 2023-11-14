@@ -69,7 +69,7 @@ public class Flight implements Subject{
             // Inizializza la lista delle prenotazioni per il giorno se non esiste
             dayReservations.putIfAbsent(day, new ArrayList<>());
             dayReservations.get(day).add(passenger);
-            notifyObservers();
+            notifyObservers(day);
         }
 
     }
@@ -93,10 +93,9 @@ public class Flight implements Subject{
     }
 
     @Override
-    public void notifyObservers() {
-        int availableSeats = seatAvailability.values().stream().mapToInt(Integer::intValue).sum();
+    public void notifyObservers(int day) {
         for (Observer observer : observers) {
-            observer.update(this, availableSeats);
+            observer.update(this, getAvailableSeats(day));
         }
     }
 }
